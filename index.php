@@ -19,6 +19,20 @@
     ?>
     <div class="container col-md-6">
         <form action="insert.php" method="POST">
+            <?php
+            if (isset($_GET['error'])) {
+            ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $_GET['error'] ?>
+                </div>
+            <?php } ?>
+
+            <?php if (isset($_GET['success'])) {
+            ?>
+                <div class="alert alert-success" role="alert">
+                    <?php echo $_GET['success'] ?>
+                </div>
+            <?php } ?>
             <div class="form-group">
                 <label for="inputEmail4">Item Name</label>
                 <input type="text" name="item" class="form-control" id="inputEmail4" placeholder="">
@@ -30,7 +44,7 @@
 
 
                 <label for="inputAddress">Description</label>
-                <input type="text" name="description" class="form-control" id="inputAddress" placeholder="">
+                <input type="text" name="description" class="form-control" id="inputAddress" placeholder="Optional">
 
 
                 <label for="inputAddress2">Purchased Date</label>

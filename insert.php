@@ -18,7 +18,7 @@ if (isset($_POST['add'])) {
     $w_month = validate($_POST['warranty_month']);
 
     if (empty($item)) {
-        header("location:index.php?error=required fields are not provided");
+        header("location:index.php?error=item name is not provided");
         die;
     } elseif (empty($shop)) {
         header("location:index.php?error=shop name field is not provided");
@@ -36,9 +36,7 @@ if (isset($_POST['add'])) {
     $sql = "INSERT INTO warranty (item_name,purchased_shop,description,purchased_date,warranty_coverage) 
 VALUES('$item','$shop','$description','$purch_date','$w_month')";
     $result = mysqli_query($conn, $sql);
-    echo "{$item} added successfully to the database with {$w_month} month remaining warranty";
-    $_SESSION['message'] = "Record has been saved";
-    $_SESSION['msg_type'] = "success";
+    header("location:index.php?success={$item} successfully added to the database with warranty {$w_month} months");
 } else {
     echo "Invalid URL chosen <a href='http://localhost/warranty_claim/index.php'>Click Here to go back</a>";
 }
