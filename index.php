@@ -76,26 +76,35 @@
                         <th scope="col">Description</th>
                         <th scope="col">Purchased Date</th>
                         <th scope="col">Warranty Coverage</th>
-                        <th scope="col">Warranty remaining (Days)</th>
+                        <th scope="col">Warranty expiring at</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    $i=1;
+                    $i = 1;
+
                     while ($rows = mysqli_fetch_assoc($result)) {
 
 
                     ?>
+
+                        <?php
+                        $tot_days = $rows['warranty_coverage'] * 30;
+                        $fin = (string)$tot_days;
+
+                        ?>
                         <tr>
-                            <th scope="row"><?=$i?></th>
-                            <td><?=$rows['item_name']?></td>
-                            <td><?=$rows['purchased_shop']?></td>
-                            <td><?=$rows['description']?></td>
-                            <td><?=$rows['purchased_date']?></td>
-                            <td><?=$rows['warranty_coverage']?></td>
-                            <td><?=$rows['']?></td>
+                            <th scope="row"><?= $i ?></th>
+                            <td><?= $rows['item_name'] ?></td>
+                            <td><?= $rows['purchased_shop'] ?></td>
+                            <td><?= $rows['description'] ?></td>
+                            <td><?= $rows['purchased_date'] ?></td>
+                            <td><?= $rows['warranty_coverage'] ?></td>
+
+                            <td><?= date('Y-m-d', strtotime($rows['purchased_date'] . $fin . 'days')); ?></td>
                         </tr>
-                    <?php $i++; } ?>
+                    <?php $i++;
+                    } ?>
 
                 </tbody>
             </table>
