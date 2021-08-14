@@ -12,10 +12,10 @@ if (isset($_POST['add'])) {
     }
 
     $item = validate($_POST['item']);
-    $shop = $_POST['shop'];
-    $description = $_POST['description'];
-    $purch_date = $_POST['purchased_date'];
-    $w_month = $_POST['warranty_month'];
+    $shop = validate($_POST['shop']);
+    $description = validate($_POST['description']);
+    $purch_date = validate($_POST['purchased_date']);
+    $w_month = validate($_POST['warranty_month']);
 
     if (empty($item)) {
         header("location:index.php?error=required fields are not provided");
