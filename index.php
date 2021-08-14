@@ -14,7 +14,9 @@
 </head>
 
 <body>
+    <?php
 
+    ?>
     <div class="container col-md-6">
         <form action="insert.php" method="POST">
             <div class="form-group">
@@ -43,7 +45,7 @@
                 </select>
                 <br>
 
-                <button type="submit" class="btn btn-primary">Sign in</button>
+                <button type="submit" class="btn btn-primary" name="add">Add Record</button>
             </div>
 
 
