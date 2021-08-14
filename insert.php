@@ -29,7 +29,7 @@ if (isset($_POST['add'])) {
         die;
     }
 
-    $conn = mysqli_connect($host, $user, $password, $database);
+    
     if (mysqli_connect_errno()) {
         die("Database Connection Failed");
     }

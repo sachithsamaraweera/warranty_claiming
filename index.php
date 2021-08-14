@@ -15,7 +15,7 @@
 
 <body>
     <?php
-
+    include "read.php";
     ?>
     <div class="container col-md-6">
         <form action="insert.php" method="POST">
@@ -61,17 +61,52 @@
 
                 <button type="submit" class="btn btn-primary" name="add">Add Record</button>
             </div>
-
-
-
         </form>
     </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <?php if (mysqli_num_rows($result)) {  ?>
+
+        <div class="container">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Shop Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Purchased Date</th>
+                        <th scope="col">Warranty Coverage</th>
+                        <th scope="col">Warranty remaining (Days)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $i=1;
+                    while ($rows = mysqli_fetch_assoc($result)) {
+
+
+                    ?>
+                        <tr>
+                            <th scope="row"><?=$i?></th>
+                            <td><?=$rows['item_name']?></td>
+                            <td><?=$rows['purchased_shop']?></td>
+                            <td><?=$rows['description']?></td>
+                            <td><?=$rows['purchased_date']?></td>
+                            <td><?=$rows['warranty_coverage']?></td>
+                            <td><?=$rows['']?></td>
+                        </tr>
+                    <?php $i++; } ?>
+
+                </tbody>
+            </table>
+        <?php } ?>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>
