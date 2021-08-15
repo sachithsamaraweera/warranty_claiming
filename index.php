@@ -90,7 +90,7 @@
 
                         <?php
                         $tot_days = $rows['warranty_coverage'] * 30;
-                        $fin = (string)$tot_days;
+
 
                         ?>
                         <tr>
@@ -101,7 +101,7 @@
                             <td><?= $rows['purchased_date'] ?></td>
                             <td><?= $rows['warranty_coverage'] ?></td>
 
-                            <td><?= date('Y-m-d', strtotime($rows['purchased_date'] . $fin . 'days')); ?></td>
+                            <td><?= date('Y-m-d', strtotime($rows['purchased_date'] . $tot_days . 'days')); ?></td>
                         </tr>
                     <?php $i++;
                     } ?>
